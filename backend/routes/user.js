@@ -23,6 +23,7 @@ router.post(
         body("mobile").isMobilePhone().withMessage("Valid mobile number is required"),
     ],
     async (req, res) => {
+        console.log("Received signup payload:", req.body);
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
@@ -60,7 +61,7 @@ router.post(
     async (req, res) => {
         
         // Log the incoming request body to check its structure
-        console.log("Received login request body:", req.body);
+        // console.log("Received login request body:", req.body);
         
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
