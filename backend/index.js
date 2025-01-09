@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 4000;
 const MONGODB_URI = process.env.MONGOOSE_URI_STRING;
 
 // Middleware
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors({ origin: '*' }));
 app.use(bodyParser.urlencoded({ extended: true })); // Body parser middleware
 app.use(bodyParser.json());
 app.use(express.json());
