@@ -220,3 +220,4 @@ POST /api/v1/user/signup ::1 2025-01-06T13:47:06.480Z
 POST /api/v1/user/signup ::1 2025-01-06T13:48:57.866Z
 POST /api/v1/user/signup ::1 2025-01-06T13:50:36.889Z
 POST /api/v1/user/login ::1 2025-01-08T05:26:13.229Z
+POST /api/v1/user/login ::1 2025-01-09T11:33:20.736Z
