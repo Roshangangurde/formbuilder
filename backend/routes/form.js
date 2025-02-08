@@ -14,7 +14,7 @@ const validateForm = [
 ];
 
 router.post(
-    "/form",
+    "/",
     authMiddleware,
     validateForm,
     async (req, res) => {
@@ -43,7 +43,7 @@ router.post(
 
 //view all forms
 router.get(
-    "/forms", // Route for retrieving all forms of the authenticated user
+    "/", // Route for retrieving all forms of the authenticated user
     authMiddleware, // Ensure the user is authenticated
     async (req, res) => {
         try {
@@ -61,34 +61,36 @@ router.get(
 
 
 router.delete(
-    "/form/:id", // Accept the form ID as a URL parameter
-    authMiddleware, // Ensure the user is authenticated
+    "/:id",
+    authMiddleware,
     async (req, res) => {
         const { id } = req.params;
 
         try {
-            // Find the form by ID
             const form = await Form.findById(id);
 
             if (!form) {
                 return res.status(404).json({ message: "Form not found" });
             }
 
-            // Check if the authenticated user is the owner of the form
             if (form.user.toString() !== req.user.id) {
                 return res.status(403).json({ message: "Unauthorized to delete this form" });
             }
 
-            // Delete the form
-            await Form.findByIdAndDelete(id);
-            res.status(200).json({ message: "Form deleted successfully" });
+            const deletedForm = await Form.findByIdAndDelete(id); // Capture the deleted form (optional)
+
+            if (!deletedForm) { // Double check if the form was actually deleted
+                return res.status(404).json({ message: "Form not found" }); // in case it was deleted by someone else in between.
+            }
+
+            res.status(204).end(); // 204 No Content - preferred for DELETE without body
+
         } catch (err) {
             console.error("Error deleting form:", err);
             res.status(500).json({ message: "Server error" });
         }
     }
 );
-
 
 // Validation rules for editing a form
 const validateFormUpdate = [
@@ -109,7 +111,7 @@ const validateFormUpdate = [
 
 // PUT route to update a form
 router.put(
-    "/form/:id",
+    "/:id",
     authMiddleware,
     validateFormUpdate,
     async (req, res) => {

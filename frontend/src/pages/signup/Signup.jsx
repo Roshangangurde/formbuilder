@@ -137,7 +137,8 @@ export default function Signup() {
                 console.log("Submitting formData:", formData); 
                 console.log("Response received:", res);
                 const token = res?.token;
-                if (res.status === 200 || token) {
+                
+                if (token) {
                     localStorage.setItem("token", token);
                     alert( 'Registered successfully');
                         navigate('/form');
