@@ -390,3 +390,6 @@ POST /api/v1/invite ::1 2025-03-16T19:06:20.822Z
 POST /api/v1/invite ::1 2025-03-16T19:06:38.611Z
 POST /api/v1/invite ::1 2025-03-16T19:08:48.859Z
 POST /api/v1/invite ::1 2025-03-16T19:10:37.040Z
+POST /api/v1/user/login ::1 2025-03-17T14:27:38.147Z
+POST /api/v1/typebot ::1 2025-03-17T14:27:43.835Z
+POST /api/v1/typebot ::1 2025-03-17T14:28:39.115Z
