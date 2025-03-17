@@ -20,12 +20,12 @@ const apiRequest = async (url, userData) => {
 };
 
 export const signup = async (userData) => {
-  console.log("auth.jsx exports:", { signup });
+  // console.log("auth.jsx exports:", { signup });
   return apiRequest(`${import.meta.env.VITE_BASE_URL}/api/v1/user/signup`, userData);
 };
 
 export const login = async (userData) => {
-  console.log("auth.jsx exports:", { login });
+  // console.log("auth.jsx exports:", { login });
   return apiRequest(`${import.meta.env.VITE_BASE_URL}/api/v1/user/login`, userData);
 };
 

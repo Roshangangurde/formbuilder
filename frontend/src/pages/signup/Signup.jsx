@@ -137,12 +137,13 @@ export default function Signup() {
                 console.log("Submitting formData:", formData); 
                 console.log("Response received:", res);
                 const token = res?.token;
+                console.log("Token received:", token);
                 
-                if (token) {
-                    localStorage.setItem("token", token);
-                    alert( 'Registered successfully');
-                        navigate('/form');
-                
+                if (res.message === 'User created') {
+                    alert('Registered successfully');
+                    console.log("Navigating to login...");
+                    navigate('/login'); // Navigate to login page
+                    console.log("Navigation attempted");
                  }  else {
                   alert(` ${res.message}`);
                   

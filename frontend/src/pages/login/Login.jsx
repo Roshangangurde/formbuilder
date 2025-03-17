@@ -82,6 +82,7 @@ export default function Login() {
                 console.log("Response received:", res);
 
                 const token = res?.token; 
+                console.log("Token received:", token);
          if (token) {
              localStorage.setItem("token", token);
              alert("Login successful");

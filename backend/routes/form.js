@@ -5,12 +5,16 @@ const { body, validationResult } = require("express-validator");
 
 const router = express.Router();
 
+const fieldTypes = [
+    "text", "radio", "checkbox", "select", "number", "date",
+    "phone", "email", "rating", "image", "video", "gif", "button"
+];
 
 const validateForm = [
     body("form_name").notEmpty().withMessage("Form name is required"),
     body("fields").isArray({ min: 1 }).withMessage("Fields must be a non-empty array"),
     body("fields.*.label").notEmpty().withMessage("Field label is required"),
-    body("fields.*.type").isIn(['text', 'radio', 'checkbox', 'select', 'number', 'date']).withMessage("Invalid field type"),
+    body("fields.*.type").isIn(fieldTypes).withMessage("Invalid field type"),
 ];
 
 router.post(
@@ -41,16 +45,13 @@ router.post(
     }
 );
 
-//view all forms
+// View all forms for authenticated user
 router.get(
-    "/", // Route for retrieving all forms of the authenticated user
-    authMiddleware, // Ensure the user is authenticated
+    "/",
+    authMiddleware,
     async (req, res) => {
         try {
-            // Fetch all forms created by the authenticated user
             const forms = await Form.find({ user: req.user.id });
-
-            // Respond with the list of forms
             res.status(200).json({ message: "Forms retrieved successfully", forms });
         } catch (err) {
             console.error("Error fetching forms:", err);
@@ -59,7 +60,7 @@ router.get(
     }
 );
 
-
+// Delete a form
 router.delete(
     "/:id",
     authMiddleware,
@@ -77,13 +78,8 @@ router.delete(
                 return res.status(403).json({ message: "Unauthorized to delete this form" });
             }
 
-            const deletedForm = await Form.findByIdAndDelete(id); // Capture the deleted form (optional)
-
-            if (!deletedForm) { // Double check if the form was actually deleted
-                return res.status(404).json({ message: "Form not found" }); // in case it was deleted by someone else in between.
-            }
-
-            res.status(204).end(); // 204 No Content - preferred for DELETE without body
+            await Form.findByIdAndDelete(id);
+            res.status(204).end();
 
         } catch (err) {
             console.error("Error deleting form:", err);
@@ -92,7 +88,7 @@ router.delete(
     }
 );
 
-// Validation rules for editing a form
+// Validation rules for updating a form
 const validateFormUpdate = [
     body("form_name").optional().notEmpty().withMessage("Form name is required if provided"),
     body("fields")
@@ -105,11 +101,11 @@ const validateFormUpdate = [
         .withMessage("Field label is required if provided"),
     body("fields.*.type")
         .optional()
-        .isIn(["text", "radio", "checkbox", "select", "number", "date"])
+        .isIn(fieldTypes)
         .withMessage("Invalid field type"),
 ];
 
-// PUT route to update a form
+// Update a form
 router.put(
     "/:id",
     authMiddleware,
@@ -124,19 +120,16 @@ router.put(
         const { form_name, description, fields } = req.body;
 
         try {
-            // Find the form by ID and ensure it belongs to the authenticated user
             const form = await Form.findOne({ _id: id, user: req.user.id });
 
             if (!form) {
                 return res.status(404).json({ message: "Form not found or not authorized" });
             }
 
-            // Update fields if provided
             if (form_name) form.form_name = form_name;
             if (description) form.description = description;
             if (fields) form.fields = fields;
 
-            // Save updated form
             await form.save();
             res.status(200).json({ message: "Form updated successfully", form });
         } catch (err) {
@@ -145,8 +138,5 @@ router.put(
         }
     }
 );
-
-
-
 
 module.exports = router;
