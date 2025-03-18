@@ -1,8 +1,11 @@
 const mongoose = require("mongoose");
 
-const inviteSchema = new mongoose.Schema({
-    email: { type: String, required: true, unique: true }, // Ensure email is unique
-    invitedAt: { type: Date, default: Date.now },
+const InviteSchema = new mongoose.Schema({
+    email: { type: String, required: false,unique: false }, // ✅ Ensure email is required
+    formId: { type: String, required: true, unique: true },
+    link: { type: String, required: true },
+    permission: { type: String, enum: ["view", "edit"], required: true },
+    createdAt: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model("Invite", inviteSchema);
+module.exports = mongoose.model("Invite", InviteSchema);
