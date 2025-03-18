@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 
 const inviteSchema = new mongoose.Schema({
-    email: { type: String, required: true },
-    workplaceId: { type: mongoose.Schema.Types.ObjectId, ref: "Workplace", required: true },
+    email: { type: String, required: true, unique: true }, // Ensure email is unique
     invitedAt: { type: Date, default: Date.now },
 });
 
