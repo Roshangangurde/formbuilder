@@ -1,18 +1,21 @@
 import { useState } from "react";
-import { Button, Input, Select } from "@/components/ui";
-import { PlusCircle, Trash2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import Button from "../../components/Button";
+import Input from "../../components/Input";
+import Select from "../../components/Select";
 
 export default function FormBot() {
   const [formName, setFormName] = useState("");
   const [fields, setFields] = useState([]);
+  const navigate = useNavigate();
 
   const fieldTypes = [
     "text", "email", "phone", "number", "date", "rating",
     "image", "video", "gif", "button"
   ];
 
-  const addField = () => {
-    setFields([...fields, { id: Date.now(), label: "", type: "text" }]);
+  const addField = (type) => {
+    setFields([...fields, { id: Date.now(), label: type, type }]);
   };
 
   const updateField = (id, key, value) => {
@@ -26,53 +29,79 @@ export default function FormBot() {
   const handleSubmit = () => {
     const formData = { form_name: formName, fields };
     console.log("Form Data:", formData);
+    navigate("/invite");
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
-      <h1 className="text-2xl font-bold mb-4">Form Bot</h1>
+    <div className="flex h-screen bg-gray-900 text-white">
+      {/* Sidebar */}
+      <div className="w-1/4 p-4 bg-black">
+        <h2 className="text-xl font-bold mb-4">Elements</h2>
 
-      {/* Form Name Input */}
-      <Input
-        type="text"
-        placeholder="Enter form name..."
-        value={formName}
-        onChange={(e) => setFormName(e.target.value)}
-        className="mb-4"
-      />
-
-      {/* Fields Section */}
-      {fields.map((field, index) => (
-        <div key={field.id} className="flex items-center gap-3 mb-3">
-          <Input
-            type="text"
-            placeholder="Field label..."
-            value={field.label}
-            onChange={(e) => updateField(field.id, "label", e.target.value)}
-          />
-          <Select
-            value={field.type}
-            onChange={(e) => updateField(field.id, "type", e.target.value)}
-          >
-            {fieldTypes.map(type => (
-              <option key={type} value={type}>{type}</option>
+        <div className="mb-4">
+          <h3 className="font-semibold mb-2">Bubbles</h3>
+          <div className="space-y-2">
+            {["Text", "Image", "Video", "GIF"].map((item) => (
+              <Button key={item} className="w-full" onClick={() => addField(item.toLowerCase())}>{item}</Button>
             ))}
-          </Select>
-          <Button variant="destructive" onClick={() => removeField(field.id)}>
-            <Trash2 size={18} />
-          </Button>
+          </div>
         </div>
-      ))}
 
-      {/* Add Field Button */}
-      <Button variant="outline" onClick={addField} className="mb-4">
-        <PlusCircle className="mr-2" /> Add Field
-      </Button>
+        <div>
+          <h3 className="font-semibold mb-2">Inputs</h3>
+          <div className="space-y-2">
+            {["Text", "Number", "Email", "Phone", "Date", "Rating", "Buttons"].map((item) => (
+              <Button key={item} className="w-full" onClick={() => addField(item.toLowerCase())}>{item}</Button>
+            ))}
+          </div>
+        </div>
+      </div>
 
-      {/* Submit Button */}
-      <Button onClick={handleSubmit} className="w-full">
-        Submit Form
-      </Button>
+      {/* Main Form Area */}
+      <div className="flex-1 p-6">
+        <h1 className="text-2xl font-bold mb-4">Form Bot</h1>
+
+        {/* Form Name Input */}
+        <Input
+          type="text"
+          placeholder="Enter form name..."
+          value={formName}
+          onChange={(e) => setFormName(e.target.value)}
+          className="w-full mb-4 bg-gray-800 border border-gray-700 text-white p-2 rounded"
+        />
+
+        {/* Start Block */}
+        <div className="p-4 bg-gray-800 text-white rounded-lg mb-4 flex items-center">
+          <span className="mr-2">🚩</span> Start
+        </div>
+
+        {/* Fields Section */}
+        {fields.map((field) => (
+          <div key={field.id} className="p-4 bg-gray-800 text-white rounded-lg mb-4 flex items-center">
+            <Input
+              type="text"
+              placeholder="Click here to edit"
+              value={field.label || ""}
+              onChange={(e) => updateField(field.id, "label", e.target.value)}
+              className="flex-grow bg-gray-900 text-white border-gray-700 p-2 rounded"
+            />
+            <Select
+              value={field.type}
+              onChange={(e) => updateField(field.id, "type", e.target.value)}
+              options={fieldTypes}
+              className="bg-gray-900 text-white border-gray-700 p-2 rounded ml-2"
+            />
+            <Button onClick={() => removeField(field.id)} className="ml-2 bg-red-600 px-3 py-1 rounded">
+              Delete
+            </Button>
+          </div>
+        ))}
+
+        {/* Submit Button */}
+        <Button onClick={handleSubmit} className="w-full bg-green-600 px-4 py-2 rounded">
+          Submit Form
+        </Button>
+      </div>
     </div>
   );
 }

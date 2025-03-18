@@ -1,5 +1,5 @@
 import './App.css'
-import { Login,Signup,Home,Form,Forms, InviteForm,  WorkplaceAccess} from './pages/index'
+import { Login,Signup,Home,Form,Forms,Typebot,InviteForm,WorkplaceAccess} from './pages/index'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 function App() {
 
@@ -14,7 +14,7 @@ function App() {
         <Route path="/forms" element={<Forms />} />
         <Route path="/editForm/:id" element={<Form />} />
         <Route path="/invite" element={<InviteForm />} />
-        {/* <Route path="/typebot" element={<Typebot />} /> */}
+        <Route path="/typebot" element={<Typebot />} />
         <Route path="/workplaceaccess" element={<WorkplaceAccess />} />
       </Routes>
     </BrowserRouter>

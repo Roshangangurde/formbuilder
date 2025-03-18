@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Form() {
+    const [forms, setForms] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
@@ -9,8 +10,35 @@ export default function Form() {
     const API_BASE_URL = `${import.meta.env.VITE_BASE_URL}/api/v1`;
 
     useEffect(() => {
+        fetchForms();
         console.log("Token:", token);
     }, []);
+
+    const fetchForms = async () => {
+        try {
+            const response = await fetch(`${API_BASE_URL}/typebot`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({ form_name: "New Typebot Form" }),
+            });
+            
+
+            if (!response.ok) {
+                throw new Error(`Error ${response.status}: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            console.log("✅ Fetched Forms:", data);
+            setForms(data);
+            setIsLoading(false);
+        } catch (error) {
+            console.error("❌ Error fetching forms:", error);
+            alert("Error fetching forms: " + error.message);
+        }
+    };
 
     // Function to make API requests
     const apiRequest = async (url, method, body = null) => {
@@ -48,7 +76,7 @@ export default function Form() {
         const data = await apiRequest(`${API_BASE_URL}/typebot`, "POST", { form_name: "New Typebot Form" });
         if (data) {
             alert("Typebot Form Created Successfully!");
-            navigate("/invite"); // Navigate to Invite Page instead
+            navigate("/typebot"); // Navigate to Invite Page instead
         }
     };
 
