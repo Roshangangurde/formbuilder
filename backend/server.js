@@ -14,15 +14,14 @@ console.log("JWT_SECRET:", process.env.JWT_SECRET);
 
 connectDB();
 
-
-app.use(cors(corsOptions));
-
 const corsOptions = {
   origin: "https://formbuilder-bay.vercel.app",  
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true, 
 };
+
+app.use(cors(corsOptions));
 
 app.options("*", cors(corsOptions));
 app.use(express.json());
