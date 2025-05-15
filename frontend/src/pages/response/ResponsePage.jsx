@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import API from '../../services/api';
-import styles from './response.module.css';
+import styles from './Response.module.css';
 import { useParams } from 'react-router-dom';
 import ViewCount from '../../components/view/ViewCount';
 import StartCount from '../../components/start/StartCount';
