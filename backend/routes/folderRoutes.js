@@ -1,5 +1,5 @@
 import express from "express";
-import Folder from "../models/Folder.js"; 
+import Folder from "../models/folder.js"; 
 import authMiddleware from "../middleware/authMiddleware.js";
 
 const router = express.Router();
