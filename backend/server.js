@@ -6,7 +6,7 @@ import indexRoutes from "./routes/indexRoutes.js";
 
 dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 console.log("JWT_SECRET:", process.env.JWT_SECRET);
 
@@ -25,4 +25,4 @@ app.get("/", (req, res) => {
 });
 
 // Start Server
-app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(` Server running on http://localhost:${PORT}`));
