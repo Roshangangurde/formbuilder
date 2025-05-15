@@ -6,7 +6,7 @@ import API from '../../services/api';
 import userIcon from '../../assets/user.png';
 import lockIcon from '../../assets/lock.png'; 
 import eyeIcon from '../../assets/eye.png';
-import logoutIcon from '../../assets/logout.png';
+import logoutIcon from '../../assets/Logout.png';
 
 
 const Settings = () => {
