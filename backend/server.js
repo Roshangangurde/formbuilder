@@ -15,7 +15,7 @@ console.log("JWT_SECRET:", process.env.JWT_SECRET);
 connectDB();
 
 const allowedOrigins = [
-  "https://formbuilder-bay.vercel.app",
+  "https://formbuilder-orpin-one.vercel.app",
   "http://localhost:5173"
 ];
 
