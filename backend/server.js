@@ -10,19 +10,29 @@ const PORT = process.env.PORT;
 
 console.log("JWT_SECRET:", process.env.JWT_SECRET);
 
-// Connect to MongoDB
+
+
 connectDB();
 
-// Middleware
-app.use(cors());
+
+app.use(cors(corsOptions));
+
+const corsOptions = {
+  origin: "https://formbuilder-bay.vercel.app",  
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true, 
+};
+
+app.options("*", cors(corsOptions));
 app.use(express.json());
 
-// Routes
+
 app.use("/api/v1/", indexRoutes);
 
 app.get("/", (req, res) => {
     res.send("Welcome to the Form Builder API!");
 });
 
-// Start Server
+
 app.listen(PORT, () => console.log(` Server running on http://localhost:${PORT}`));
