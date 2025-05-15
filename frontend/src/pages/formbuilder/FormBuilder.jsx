@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import styles from "./FormBuilder.module.css";
+import styles from "./Formbuilder.module.css";
 import AuthContext from "../../context/AuthContext";
 import Navbar from "../../components/navbar/Navbar";
 import Rating from "../../components/rating/Rating";
