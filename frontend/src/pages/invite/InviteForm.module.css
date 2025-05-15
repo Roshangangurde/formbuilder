@@ -1,0 +1,78 @@
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 2rem;
+  background-color: var(--card);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  transition: color 0.3s ease;
+}
+
+button {
+  padding: 10px 16px;
+  margin-top: 10px;
+  margin-right: 10px;
+  border: none;
+  background-color: var(--blue-primary);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--blue-hover);
+}
+
+button:disabled {
+  background-color: var(--text-tertiary);
+  cursor: not-allowed;
+}
+
+input[type="email"],
+input[type="text"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: var(--card);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.copyContainer {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.copyContainer input {
+  flex: 1;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  float: right;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.closeBtn:hover {
+  color: var(--error-red);
+}

@@ -1,0 +1,30 @@
+.ratingContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.ratingCircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--blue-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.ratingCircle.active {
+  border-color: #ffc107;
+  background-color: #fff8e1;
+}
+
+.ratingCircle:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.innerCircle {
+  font-size: 14px;
+  font-weight: bold;
+}

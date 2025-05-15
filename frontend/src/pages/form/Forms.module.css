@@ -1,0 +1,155 @@
+.formsContainer {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.section {
+  margin-bottom: 32px;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.flexContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Folder Card */
+.folderCard {
+  width: 200px;
+  padding: 10px;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.folderNameButton {
+  flex: 1;
+  text-align: left;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+/* Form Card */
+.formCard {
+  width: 200px;
+  height: 137px;
+  padding: 16px;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.formName {
+  flex: 1;
+  text-align: center;
+  align-content: center;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+/* Delete Button */
+.deleteButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.deleteButton:hover {
+  opacity: 1;
+}
+
+/* Empty State */
+.emptyState {
+  text-align: center;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.emptyState p {
+  color: var(--text-primary);
+  font-size: 16px;
+  margin-bottom: 16px;
+  transition: color 0.3s ease;
+}
+
+.emptyStateActions {
+  display: flex;
+  gap: 16px;
+}
+
+/* Create Buttons */
+.createFolderButton {
+  background-color: var(--card);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.createFolderButton:hover {
+  border-color: var(--blue-primary);
+}
+
+.createFormButton {
+  background-color: var(--blue-primary);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.createFormButton:hover {
+  background-color: var(--blue-hover);
+}

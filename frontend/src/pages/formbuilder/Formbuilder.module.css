@@ -1,0 +1,301 @@
+/* Base Container */
+.formBuilder {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--bg);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--card);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+/* Navbar Sections */
+.leftSide,
+.middle,
+.rightSide {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Form Name Input */
+.formNameInput {
+  width: 200px;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background-color: var(--card);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.formNameInput:focus {
+  outline: none;
+  border-color: var(--blue-primary);
+  box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+}
+
+/* Buttons */
+button,
+.navButton,
+.toggleButton,
+.shareButton,
+.saveButton,
+.closeButton,
+.submitButton {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+/* Specific Button Styles */
+.navButton {
+  background-color: var(--surface);
+  color: var(--text-primary);
+}
+
+.navButton:hover {
+  background-color: var(--blue-light);
+  color: white;
+}
+
+.navButton.active {
+  background-color: var(--blue-primary);
+  color: white;
+}
+
+.toggleButton {
+  background: transparent;
+  font-size: 1.2em;
+  color: var(--text-primary);
+}
+
+.shareButton {
+  background-color: var(--success-green);
+  color: white;
+}
+
+.shareButton:hover {
+  background-color: #2d8e47;
+}
+
+.saveButton {
+  background-color: var(--blue-primary);
+  color: white;
+}
+
+.saveButton:hover {
+  background-color: var(--blue-hover);
+}
+
+.closeButton {
+  background: transparent;
+  font-size: 1.2em;
+  color: var(--text-secondary);
+}
+
+.closeButton:hover {
+  color: var(--error-red);
+}
+
+/* Main Content */
+.mainContent {
+  margin-left: 245px;
+  padding: 20px;
+  margin-top: 46px;
+  flex-grow: 1;
+  overflow-y: auto;
+  background-color: var(--bg);
+  transition: background-color 0.3s ease;
+}
+
+/* Form Canvas & Response Page */
+.formCanvas,
+.responsePage {
+  padding: 20px;
+  min-height: calc(100vh - 120px);
+  background-color: var(--card);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Form Fields */
+.formField {
+  padding: 10px 30px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin: 15px 20px;
+  background-color: var(--card);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.formField label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.formField input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: var(--card);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+/* Remove Button */
+.removeButton {
+  position: absolute;
+  top: -28px;
+  right: -33px;
+  background: transparent;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.removeButton:hover {
+  color: var(--error-red);
+}
+
+/* Submit Button */
+.submitButton {
+  margin-top: 20px;
+  background-color: var(--success-green);
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+}
+
+.submitButton:hover {
+  background-color: #2d8e47;
+}
+
+/* Response Page Centering */
+.responsePage {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Loading State */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+
+/* Error State */
+.errorContainer {
+  padding: 40px;
+  text-align: center;
+  color: var(--error-red);
+}
+
+.errorContainer button {
+  margin: 10px;
+  padding: 8px 16px;
+}
+
+/* Empty State */
+.emptyState {
+  padding: 20px;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+/* Form Start */
+.formStart {
+  color: var(--text-primary);
+  padding: 12px 24px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 6px;
+}
+
+.startContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 56px);
+}
+
+/* Rating Input */
+.ratingInput {
+  display: flex;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.star {
+  font-size: 24px;
+  color: var(--text-tertiary);
+  transition: color 0.2s;
+}
+
+.star:hover,
+.star.filled {
+  color: var(--orange-accent);
+}
+
+.copyLinkContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.copyLinkButton {
+  background-color: var(--blue-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.copyLinkButton:hover {
+  background-color: var(--blue-hover);
+  transform: translateY(-1px);
+}
+
+/* Dark mode styles */
+.dark .copyLinkButton {
+  background-color: var(--blue-light);
+}
+
+.dark .copyLinkButton:hover {
+  background-color: var(--blue-primary);
+}

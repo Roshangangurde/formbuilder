@@ -1,0 +1,66 @@
+:root {
+  /* Colors - now using generic names that work for both modes */
+  --blue-primary: #2563eb;
+  --blue-hover: #1d4ed8;
+  --blue-light: #3b82f6;
+  --success-green: #22c55e;
+  --error-red: #ef4444;
+  --orange-accent: #f59e0b;
+  
+  /* Light Mode Defaults */
+  --bg: #ffffff;
+  --text-primary: #000000;
+  --surface: #f0f0f0;
+  --card: #ffffff;
+  --border: #ccc;
+  --text-secondary: #4b5563;
+  --text-tertiary: #9ca3af;
+  --scrollbar-track: #e5e7eb;
+  --scrollbar-thumb: #d1d5db;
+}
+
+:root.dark {
+  /* Dark Mode Overrides */
+  --bg: #1F1F23;
+  --text-primary: #f9fafb;
+  --surface: #1f2937;
+  --card: #1a1e2e;
+  --border: #374151;
+  --text-secondary: #9ca3af;
+  --text-tertiary: #6b7280;
+  --scrollbar-track: #1f2937;
+  --scrollbar-thumb: #374151;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}

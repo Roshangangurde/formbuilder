@@ -1,0 +1,151 @@
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--bg);
+  padding: 2rem;
+  transition: background-color 0.3s ease;
+}
+
+.loginForm {
+  background: transparent;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 28rem;
+  transition: all 0.3s ease;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.formGroup input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.formGroup input:focus {
+  outline: none;
+  border-color: var(--blue-primary);
+  box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+}
+
+.backButton {
+  background-color: transparent;
+  color: var(--text-secondary);
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.backButton:hover {
+  color: var(--text-primary);
+}
+
+.loginButton {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--blue-primary);
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.loginButton:hover {
+  background-color: var(--blue-hover);
+}
+
+.loginButton:disabled {
+  background-color: var(--text-tertiary);
+  cursor: not-allowed;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0;
+  color: var(--text-secondary);
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid var(--border);
+}
+
+.divider:not(:empty)::before {
+  margin-right: 1rem;
+}
+
+.divider:not(:empty)::after {
+  margin-left: 1rem;
+}
+
+.googleButton {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.googleButton:hover {
+  background-color: var(--blue-light);
+  color: white;
+  border-color: var(--blue-light);
+}
+
+.loginLink {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.loginLink a {
+  color: var(--blue-light);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.loginLink a:hover {
+  color: var(--blue-primary);
+  text-decoration: underline;
+}
+
+/* Error message styling */
+.errorMessage {
+  color: var(--error-red);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}

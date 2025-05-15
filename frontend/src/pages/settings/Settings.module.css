@@ -1,0 +1,218 @@
+.settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--bg);
+  padding: 2rem;
+  transition: background-color 0.3s ease;
+}
+
+.settingsContainer {
+  border-radius: 12px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 500px;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.title {
+  color: var(--text-primary);
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.formGroup {
+  margin-bottom: 2rem;
+}
+
+.inputGroup {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+/* Base input style - applies to all inputs */
+.inputField {
+  width: 100%;
+  padding: 0.875rem 3rem 0.875rem 3rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: var(--text-primary);
+  background-color: var(--surface);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* Specific padding for non-password fields */
+.inputField[type="text"],
+.inputField[type="email"] {
+  padding-left: 3rem;
+  padding-right: 1rem;
+}
+
+/* Specific padding for password fields */
+.inputField[type="password"] {
+  padding-right: 3rem;
+  padding-left: 3rem;
+}
+
+.inputField::placeholder {
+  color: var(--text-tertiary);
+  opacity: 0.7;
+}
+
+.inputField:focus {
+  outline: none;
+  border-color: var(--blue-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* Input icons */
+.inputIcon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  pointer-events: none;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+/* Password toggle button */
+.passwordToggle {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.passwordToggle:hover {
+  color: var(--text-primary);
+}
+
+.updateButton {
+  width: 100%;
+  padding: 0.875rem;
+  background-color: var(--blue-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.updateButton:hover {
+  background-color: var(--blue-hover);
+  transform: translateY(-1px);
+}
+
+.updateButton:active {
+  transform: translateY(0);
+}
+
+.updateButton:disabled {
+  background-color: var(--text-tertiary);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.logoutSection {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  transition: border-color 0.3s ease;
+}
+
+.logoutButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--error-red);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.logoutButton:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+/* Success message */
+.successMessage {
+  color: var(--success-green);
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+/* Error message */
+.errorMessage {
+  color: var(--error-red);
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .settings {
+    padding: 1rem;
+    align-items: flex-start;
+  }
+  
+  .settingsContainer {
+    padding: 1.5rem;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .inputField {
+    padding: 0.75rem 2.5rem 0.75rem 2.5rem;
+  }
+  
+  .inputField[type="text"],
+  .inputField[type="email"] {
+    padding-left: 2.5rem;
+  }
+  
+  .inputField[type="password"] {
+    padding-left: 2.5rem;
+  }
+  
+  .inputIcon {
+    left: 0.75rem;
+  }
+  
+  .passwordToggle {
+    right: 0.75rem;
+  }
+}

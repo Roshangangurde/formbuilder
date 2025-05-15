@@ -1,0 +1,94 @@
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 112px;
+  width: 227px;
+  margin: 10px;
+  height: calc(100vh - 132px);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 90;
+}
+
+/* Scrollable area - this is key */
+.sidebarScrollable {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 8px; /* Space for scrollbar */
+  
+  /* For Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--card);
+}
+
+/* For Chrome/Safari */
+.sidebarScrollable::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebarScrollable::-webkit-scrollbar-track {
+  background: var(--card);
+}
+
+.sidebarScrollable::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 3px;
+}
+
+.sidebarScrollable::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-tertiary);
+}
+
+/* Rest of your styles */
+.sidebar h3 {
+  margin-top: 24px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.sidebar h3:first-child {
+  margin-top: 0;
+}
+
+.sidebar button {
+  display: block;
+  width: 100%;
+  margin: 6px 0;
+  padding: 10px 12px;
+  background-color: var(--surface);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.sidebar button:hover {
+  background-color: var(--blue-light);
+  color: white;
+}
+
+.sidebar button.active {
+  background-color: var(--blue-primary);
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+    transform: translateX(-100%);
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+}
