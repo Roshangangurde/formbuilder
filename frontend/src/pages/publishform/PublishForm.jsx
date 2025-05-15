@@ -14,7 +14,7 @@ const PublishForm = () => {
   const [hasAutoAdvanced, setHasAutoAdvanced] = useState(false);
   const hasStarted = useRef(false);
 
-  // Fetch the form
+ 
   useEffect(() => {
     const fetchForm = async () => {
       try {
@@ -27,21 +27,20 @@ const PublishForm = () => {
     fetchForm();
   }, [formId]);
 
-  // Handle new field logic
+  
   useEffect(() => {
     if (!form || !form.fields[currentIndex]) return;
 
     const currentField = form.fields[currentIndex];
-    setHasAutoAdvanced(false); // reset flag
+    setHasAutoAdvanced(false); 
 
-    // Reset inputValue based on field type
+    
     if (currentField.type === "rating") {
-      setInputValue(0); // Default to 0
+      setInputValue(0); 
     } else {
-      setInputValue(""); // For text-based inputs
+      setInputValue(""); 
     }
 
-    // Auto-advance for bubble fields
     if (currentField.category === "bubble") {
       const timer = setTimeout(() => {
         if (!responses[currentField.id] && !hasAutoAdvanced) {
@@ -66,7 +65,7 @@ const PublishForm = () => {
       hasStarted.current = true;
     }
 
-    // Input fields
+   
     if (field.category === "input") {
       if (field.required && !inputValue?.toString().trim()) {
         alert("Please fill out this field");
@@ -78,7 +77,7 @@ const PublishForm = () => {
       }));
     }
 
-    // Rating field
+   
     if (field.type === "rating") {
       setResponses((prev) => ({
         ...prev,
@@ -86,7 +85,7 @@ const PublishForm = () => {
       }));
     }
 
-    // Move to next field or submit
+   
     if (currentIndex < form.fields.length - 1) {
       setCurrentIndex((prev) => prev + 1);
     } else {
@@ -144,7 +143,7 @@ const PublishForm = () => {
         })}
       </div>
 
-      {/* Input Field */}
+   
       {currentField?.category === "input" && (
         <div className={styles.inputBox}>
           <input
@@ -173,7 +172,7 @@ const PublishForm = () => {
         </div>
       )}
 
-      {/* Rating Field */}
+   
       {currentField?.type === "rating" && (
         <div className={styles.inputBox}>
           <Rating

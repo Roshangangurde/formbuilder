@@ -14,16 +14,17 @@ console.log("JWT_SECRET:", process.env.JWT_SECRET);
 
 connectDB();
 
-const corsOptions = {
-  origin: "https://formbuilder-bay.vercel.app",  
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+const allowedOrigins = [
+  "https://formbuilder-bay.vercel.app",
+  "http://localhost:5173"
+];
+
+app.use(cors({
+  origin: allowedOrigins,
   credentials: true, 
-};
+}));
 
-app.use(cors(corsOptions));
 
-app.options("*", cors(corsOptions));
 app.use(express.json());
 
 

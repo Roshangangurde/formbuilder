@@ -4,7 +4,7 @@ const DarkModeContext = createContext();
 
 export const DarkModeProvider = ({ children }) => {
   const [darkMode, setDarkMode] = useState(() => {
-    // Check for saved preference or system preference
+  
     return window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
   });
 

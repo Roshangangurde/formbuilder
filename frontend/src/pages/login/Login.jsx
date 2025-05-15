@@ -23,7 +23,6 @@ const Login = () => {
     };
 
     const handleGoogleLogin = () => {
-        // Add your Google login logic here
         console.log("Google login clicked");
     };
 
@@ -82,7 +81,7 @@ const Login = () => {
                  </button>
                  
                  <div className={styles.loginLink}>
-                     ALreay have an account?{" "}
+                     Already have an account?{" "}
                      <a href="/register" onClick={()=>{navigate("/register")}}>
                          Register now
                      </a>

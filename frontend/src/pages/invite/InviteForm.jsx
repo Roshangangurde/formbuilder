@@ -1,17 +1,17 @@
 import { useState } from "react";
-import { useParams,useNavigate } from "react-router-dom"; // Import useParams
+import { useParams,useNavigate } from "react-router-dom"; 
 import API from "../../services/api";
 import styles from "./InviteForm.module.css";
 
 const InviteForm = () => {
-    const { formId } = useParams(); // Get formId from URL
+    const { formId } = useParams(); 
     const [email, setEmail] = useState("");
     const [role, setRole] = useState("View");
     const [inviteLink, setInviteLink] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     if (!formId) {
-        console.error("❌ Form ID is missing from URL.");
+        console.error("Form ID is missing from URL.");
         return <p>Error: Form ID is missing. Please try again.</p>;
     }
 
