@@ -1,0 +1,259 @@
+/* ── Themes ── */
+.themeWarm {
+  --blue-primary: #f97316;
+  --blue-hover:   #ea580c;
+}
+
+.themeMinimal {
+  --blue-primary: #10b981;
+  --blue-hover:   #059669;
+}
+
+/* Language bar */
+.langBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0 6px;
+  justify-content: flex-end;
+}
+
+.langSelect {
+  padding: 7px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text-primary);
+  font-size: 13px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: border-color 0.2s ease;
+}
+
+.langSelect:focus {
+  outline: none;
+  border-color: var(--blue-primary);
+}
+
+.translatingBadge {
+  font-size: 12px;
+  color: var(--text-secondary);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 10px;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+.chatContainer {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
+  background: linear-gradient(
+    180deg,
+    var(--bg) 0%,
+    rgba(59, 130, 246, 0.02) 100%
+  );
+  transition: background-color 0.3s ease;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 999px;
+}
+
+.bot,
+.user {
+  padding: 12px 16px;
+  border-radius: 18px;
+  max-width: 82%;
+  font-size: 15px;
+  line-height: 1.5;
+  animation: fadeIn 0.3s ease;
+  word-break: break-word;
+}
+
+.bot {
+  border-radius: 18px 18px 18px 4px;
+  background-color: var(--surface);
+  color: var(--text-primary);
+  align-self: flex-start;
+  border: 1px solid var(--border);
+}
+
+.user {
+  border-radius: 18px 18px 4px 18px;
+  background: linear-gradient(
+    135deg,
+    var(--blue-primary),
+    var(--blue-hover)
+  );
+  color: white;
+  align-self: flex-end;
+}
+
+.inputBox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1rem 0;
+  position: sticky;
+  bottom: 0;
+  background-color: var(--bg);
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+
+.ratingBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  position: sticky;
+  bottom: 0;
+  background-color: var(--bg);
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+
+.inputField,
+.inputBox input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  font-size: 15px;
+  outline: none;
+  background-color: var(--card);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.inputField:focus,
+.inputBox input:focus {
+  border-color: var(--blue-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+.sendButton,
+.inputBox button {
+  background: linear-gradient(
+    135deg,
+    var(--blue-primary),
+    var(--blue-hover)
+  );
+  color: white;
+  border: none;
+  padding: 0 20px;
+  min-height: 48px;
+  border-radius: 24px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.sendButton:hover,
+.inputBox button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(59, 130, 246, 0.2);
+}
+
+.sendButton:disabled,
+.inputBox button:disabled {
+  background: var(--text-tertiary);
+  cursor: not-allowed;
+}
+
+.imagePreview,
+.videoPreview {
+  max-width: 100%;
+  border-radius: 12px;
+  margin-top: 6px;
+  border: 1px solid var(--border);
+  display: block;
+}
+
+.errorBanner {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--error-red);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.loading,
+.successScreen {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  text-align: center;
+  padding: 24px;
+}
+
+.successScreen {
+  color: var(--success-green);
+  font-weight: 600;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .chatContainer {
+    padding: 0.75rem;
+  }
+
+  .bot,
+  .user {
+    max-width: 90%;
+    font-size: 14px;
+  }
+
+  .inputBox {
+    flex-direction: column;
+  }
+
+  .inputBox button {
+    width: 100%;
+  }
+}

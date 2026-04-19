@@ -1,0 +1,103 @@
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 78px;
+  width: 250px;
+  margin: 10px;
+  height: calc(100vh - 98px);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  z-index: 90;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+}
+
+.sidebarScrollable {
+  height: 100%;
+  overflow-y: auto;
+  padding: 20px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.sidebarScrollable::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebarScrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebarScrollable::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 999px;
+}
+
+.section {
+  margin-bottom: 28px;
+}
+
+.sectionTitle {
+  margin: 0 0 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fieldButton {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.fieldButton:hover {
+  background: var(--blue-light);
+  border-color: var(--blue-primary);
+  color: white;
+  transform: translateX(2px);
+}
+
+.fieldButton:active {
+  transform: translateX(1px);
+}
+
+/* tablet */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 220px;
+    top: 78px;
+    height: calc(100vh - 98px);
+  }
+}
+
+/* mobile */
+@media (max-width: 640px) {
+  .sidebar {
+    width: 200px;
+    margin: 8px;
+  }
+
+  .sidebarScrollable {
+    padding: 16px;
+  }
+
+  .fieldButton {
+    padding: 10px;
+    font-size: 13px;
+  }
+}

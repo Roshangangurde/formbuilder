@@ -1,0 +1,320 @@
+.page {
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+}
+
+.formsContainer {
+  flex: 1;
+  padding: 24px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.section {
+  margin-bottom: 32px;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.flexContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Shared card styles */
+.folderCard,
+.formCard {
+  width: 220px;
+  min-height: 140px;
+  padding: 16px;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.folderCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: auto;
+}
+
+.formCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.folderDropTarget {
+  border-color: var(--blue-primary) !important;
+  background-color: rgba(59, 130, 246, 0.06) !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25) !important;
+}
+
+.formCard[draggable="true"] {
+  cursor: grab;
+}
+
+.formCard[draggable="true"]:active {
+  cursor: grabbing;
+  opacity: 0.6;
+}
+
+.dragHint {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-tertiary);
+  margin-left: 10px;
+}
+
+.folderCard:hover,
+.formCard:hover {
+  border-color: var(--blue-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.folderNameButton {
+  flex: 1;
+  text-align: left;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.formName {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+/* Card bottom action row */
+.cardActions {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  gap: 6px;
+}
+
+.responsesButton,
+.shareCardButton {
+  flex: 1;
+  min-width: 0;
+  padding: 6px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  cursor: pointer;
+  word-break: break-word;
+  white-space: normal;
+  line-height: 1.3;
+  text-align: center;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.responsesButton:hover {
+  border-color: var(--blue-primary);
+  color: var(--blue-primary);
+  background: var(--bg);
+}
+
+.shareCardButton:hover {
+  border-color: var(--success-green);
+  color: var(--success-green);
+  background: var(--bg);
+}
+
+/* Delete button */
+.deleteButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+}
+
+.deleteButton:hover {
+  opacity: 1;
+  background-color: rgba(239, 68, 68, 0.08);
+}
+
+.deleteButton img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+/* Empty state */
+.emptyState {
+  text-align: center;
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.emptyState p {
+  color: var(--text-primary);
+  font-size: 16px;
+  margin: 0;
+}
+
+/* Buttons */
+.createFolderButton,
+.createFormButton,
+.cancelButton {
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.createFolderButton {
+  background-color: var(--card);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.createFolderButton:hover {
+  border-color: var(--blue-primary);
+}
+
+.createFormButton {
+  background-color: var(--blue-primary);
+  color: white;
+  border: none;
+}
+
+.createFormButton:hover {
+  background-color: var(--blue-hover);
+}
+
+.createFormButton:disabled,
+.createFolderButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cancelButton {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.cancelButton:hover {
+  border-color: var(--error-red);
+  color: var(--error-red);
+}
+
+/* Folder input */
+.folderInputRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.folderInput {
+  padding: 10px 12px;
+  border: 1px solid var(--blue-primary);
+  border-radius: 6px;
+  background-color: var(--card);
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+  min-width: 220px;
+}
+
+/* Loading */
+.loadingState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+/* Error banner */
+.errorBanner {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--error-red);
+  border: 1px solid var(--error-red);
+  border-radius: 6px;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .folderCard,
+  .formCard {
+    width: calc(50% - 8px);
+  }
+
+  .folderInput {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .folderCard,
+  .formCard {
+    width: 100%;
+  }
+
+  .formsContainer {
+    padding: 16px;
+  }
+}
