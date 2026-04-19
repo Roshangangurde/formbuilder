@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&family=Noto+Sans+Gurmukhi:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap');
+
+/* 🔥 Make DARK as default */
+:root {
+  /* Brand Colors */
+  --blue-primary: #2563eb;
+  --blue-hover: #1d4ed8;
+  --blue-light: #3b82f6;
+  --success-green: #22c55e;
+  --error-red: #ef4444;
+  --orange-accent: #f59e0b;
+
+  /* DARK MODE DEFAULT */
+  --bg: #0f172a; /* deeper than before */
+  --text-primary: #f9fafb;
+  --surface: #1f2937;
+  --card: #111827;
+  --border: #374151;
+  --text-secondary: #9ca3af;
+  --text-tertiary: #6b7280;
+  --scrollbar-track: #1f2937;
+  --scrollbar-thumb: #374151;
+}
+
+/* 🔥 Light mode override */
+:root.light {
+  --bg: #ffffff;
+  --text-primary: #000000;
+  --surface: #f0f0f0;
+  --card: #ffffff;
+  --border: #d1d5db;
+  --text-secondary: #4b5563;
+  --text-tertiary: #9ca3af;
+  --scrollbar-track: #e5e7eb;
+  --scrollbar-thumb: #d1d5db;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Noto Sans', system-ui, -apple-system, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Indic / RTL script rendering */
+:lang(hi), :lang(mr), :lang(ne), :lang(sa), :lang(mai), :lang(doi), :lang(kok), :lang(brx) {
+  font-family: 'Noto Sans Devanagari', 'Noto Sans', system-ui, sans-serif;
+  letter-spacing: 0 !important;
+}
+:lang(bn), :lang(as), :lang(mni) {
+  font-family: 'Noto Sans Bengali', 'Noto Sans', system-ui, sans-serif;
+  letter-spacing: 0 !important;
+}
+:lang(ta) {
+  font-family: 'Noto Sans Tamil', 'Noto Sans', system-ui, sans-serif;
+  letter-spacing: 0 !important;
+}
+:lang(te) {
+  font-family: 'Noto Sans Telugu', 'Noto Sans', system-ui, sans-serif;
+  letter-spacing: 0 !important;
+}
+:lang(kn) {
+  font-family: 'Noto Sans Kannada', 'Noto Sans', system-ui, sans-serif;
+  letter-spacing: 0 !important;
+}
+:lang(ml) {
+  font-family: 'Noto Sans Malayalam', 'Noto Sans', system-ui, sans-serif;
+  letter-spacing: 0 !important;
+}
+:lang(gu) {
+  font-family: 'Noto Sans Gujarati', 'Noto Sans', system-ui, sans-serif;
+  letter-spacing: 0 !important;
+}
+:lang(pa) {
+  font-family: 'Noto Sans Gurmukhi', 'Noto Sans', system-ui, sans-serif;
+  letter-spacing: 0 !important;
+}
+:lang(ur), :lang(ks), :lang(sd) {
+  font-family: 'Noto Nastaliq Urdu', 'Noto Sans', system-ui, sans-serif;
+  letter-spacing: 0 !important;
+}
+
+/* RTL layout adjustments */
+[dir="rtl"] .sidebar {
+  left: auto;
+  right: 0;
+}
+[dir="rtl"] .mainContent {
+  margin-left: 0;
+  margin-right: 270px;
+}
+[dir="rtl"] .fieldButton {
+  text-align: right;
+}
+[dir="rtl"] .fieldButton:hover {
+  transform: translateX(-2px);
+}
+[dir="rtl"] .folderNameButton {
+  text-align: right;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}

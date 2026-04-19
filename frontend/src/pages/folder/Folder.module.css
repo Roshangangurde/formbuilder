@@ -1,0 +1,56 @@
+.folderContainer {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.backButton,
+.createButton {
+  background-color: var(--blue-primary);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.flexContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.formCard {
+  width: 220px;
+  min-height: 140px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background-color: var(--card);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.formCard:hover {
+  border-color: var(--blue-primary);
+  transform: translateY(-2px);
+}
+
+.formName {
+  text-align: center;
+  font-weight: 500;
+}
+
+.emptyState,
+.loadingState,
+.errorState {
+  text-align: center;
+  padding: 48px;
+}

@@ -1,0 +1,237 @@
+.registerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(
+    180deg,
+    var(--bg) 0%,
+    rgba(59, 130, 246, 0.04) 100%
+  );
+  transition: all 0.3s ease;
+}
+
+.registerForm {
+  width: 100%;
+  max-width: 430px;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+.formGroup {
+  margin-bottom: 1.25rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.formGroup input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.formGroup input:focus {
+  outline: none;
+  border-color: var(--blue-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.14);
+}
+
+.backSection {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 10;
+}
+
+.backButton {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.backButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+.registerButton {
+  width: 100%;
+  padding: 0.85rem;
+  background: linear-gradient(
+    135deg,
+    var(--blue-primary),
+    var(--blue-hover)
+  );
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.registerButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(59, 130, 246, 0.25);
+}
+
+.registerButton:disabled {
+  background: var(--text-tertiary);
+  cursor: not-allowed;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 1.6rem 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid var(--border);
+}
+
+.divider::before {
+  margin-right: 1rem;
+}
+
+.divider::after {
+  margin-left: 1rem;
+}
+
+.googleButton {
+  width: 100%;
+  padding: 0.85rem;
+  background-color: var(--surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.googleButton:hover {
+  background-color: var(--blue-light);
+  color: white;
+  border-color: var(--blue-light);
+}
+
+.registerLink {
+  text-align: center;
+  margin-top: 1.6rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.registerLink a {
+  color: var(--blue-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.registerLink a:hover {
+  text-decoration: underline;
+}
+
+.errorMessage {
+  color: var(--error-red);
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.18);
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Password strength */
+.passwordStrength {
+  margin-top: 0.6rem;
+  height: 6px;
+  background-color: var(--surface);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.strengthBar {
+  height: 100%;
+  transition: width 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.strengthWeak {
+  background-color: var(--error-red);
+  width: 33%;
+}
+
+.strengthMedium {
+  background-color: var(--orange-accent);
+  width: 66%;
+}
+
+.strengthStrong {
+  background-color: var(--success-green);
+  width: 100%;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .registerContainer {
+    padding: 1rem;
+  }
+
+  .registerForm {
+    padding: 1.75rem;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .backSection {
+    top: 16px;
+    left: 16px;
+  }
+}

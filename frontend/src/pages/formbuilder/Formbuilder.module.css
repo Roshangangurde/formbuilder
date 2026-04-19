@@ -1,0 +1,504 @@
+/* ── Wrapper ── */
+.formBuilder {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* ── Main content (beside fixed sidebar) ── */
+.mainContent {
+  margin-left: 270px;
+  padding: 24px;
+  flex: 1;
+  min-height: calc(100vh - 68px);
+  background-color: var(--bg);
+  transition: background-color 0.3s ease;
+}
+
+/* ── Canvas card ── */
+.formCanvas {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 32px;
+  min-height: calc(100vh - 120px);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ── Status messages ── */
+.saveError {
+  color: var(--error-red);
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid var(--error-red);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.savingMsg {
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+/* ── Form name heading ── */
+.formStart {
+  text-align: center;
+  color: var(--text-primary);
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 28px;
+}
+
+/* ── Empty canvas placeholder ── */
+.emptyState {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 48px 20px;
+  border: 2px dashed var(--border);
+  border-radius: 10px;
+}
+
+/* ════════════════════════════════════════
+   STATES GRID
+   columns: label | empty | active | filled | delete
+   ════════════════════════════════════════ */
+.statesWrapper {
+  width: 100%;
+}
+
+/* "States" title row — spans over the 3 state columns */
+.statesTitleRow {
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr 1fr 44px;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.statesTitleCell {
+  grid-column: 2 / 5;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--text-primary);
+  padding-bottom: 6px;
+}
+
+/* Column headers */
+.statesHeader {
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr 1fr 44px;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 4px;
+}
+
+.statesHeaderCell {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* Theme column headers */
+.themeHeaderCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 6px 4px 10px;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  text-align: center;
+  word-break: break-word;
+  transition: color 0.2s, border-color 0.2s;
+  user-select: none;
+}
+
+.themeHeaderCell:hover {
+  color: var(--text-primary);
+}
+
+.themeHeaderSelected {
+  border-bottom-width: 3px;
+}
+
+.themeColorDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.themeCheck {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Theme preview cells */
+.themePreviewCell {
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 6px 4px;
+  transition: background-color 0.15s;
+}
+
+.themePreviewCell:hover {
+  background: var(--surface);
+}
+
+.themePreviewSelected {
+  background: color-mix(in srgb, var(--sel-color, #3b82f6) 8%, transparent);
+  outline: 2px solid color-mix(in srgb, var(--sel-color, #3b82f6) 30%, transparent);
+}
+
+/* Each field row */
+.fieldStateRow {
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr 1fr 44px;
+  gap: 8px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+
+.fieldStateRow:last-child {
+  border-bottom: none;
+}
+
+/* ── Label / settings column ── */
+.fieldLabelCol {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.labelInput {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.labelInput:focus {
+  outline: none;
+  border-color: var(--blue-primary);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.12);
+}
+
+.fieldTypeBadge {
+  align-self: flex-start;
+  font-size: 10px;
+  font-weight: 600;
+  background: var(--surface);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 2px 8px;
+  text-transform: capitalize;
+}
+
+.settingInput {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text-secondary);
+  font-size: 12px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.settingInput:focus {
+  outline: none;
+  border-color: var(--blue-primary);
+}
+
+/* ── State cell (input fields) ── */
+.stateCell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.previewInput {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 11px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-tertiary);
+  font-size: 13px;
+  cursor: default;
+  pointer-events: none;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.previewInputActive {
+  border-color: var(--blue-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+  color: var(--text-primary);
+}
+
+.previewInputFilled {
+  background: var(--surface);
+  color: var(--text-secondary);
+}
+
+/* Send arrow button */
+.sendBtn {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--blue-primary), var(--blue-hover));
+  color: white;
+  cursor: default;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sendBtnMuted {
+  background: var(--surface);
+  color: var(--text-tertiary);
+  border: 1px solid var(--border);
+}
+
+/* ── Rating state cell ── */
+.ratingStateWrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* ── Buttons state cell ── */
+.stateCellBtns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  min-height: 34px;
+}
+
+.stateOptionBtn {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: default;
+  word-break: break-word;
+  text-align: center;
+}
+
+.stateOptionBtnActive {
+  background: #f97316;
+  border-color: #f97316;
+  color: white;
+}
+
+.stateOptionBtnFilled {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text-tertiary);
+}
+
+/* ── Bubble edit cell (spans all 3 state columns) ── */
+.bubbleEditCell {
+  grid-column: 2 / 5;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bubbleEditInput {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-size: 13px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.bubbleEditInput:focus {
+  outline: none;
+  border-color: var(--blue-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+.mediaThumbnail {
+  width: 56px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+/* ── Button options editor (inside label col) ── */
+.buttonEditor {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.buttonEditorRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.buttonOptionInput {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-size: 12px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.buttonOptionInput:focus {
+  outline: none;
+  border-color: var(--blue-primary);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.removeOptionButton {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: 5px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+
+.removeOptionButton:hover:not(:disabled) {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: var(--error-red);
+  color: var(--error-red);
+}
+
+.removeOptionButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.addOptionButton {
+  align-self: flex-start;
+  background: transparent;
+  border: 1px dashed var(--border);
+  color: var(--text-secondary);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.addOptionButton:hover {
+  border-color: var(--blue-primary);
+  color: var(--blue-primary);
+}
+
+/* ── Delete button ── */
+.deleteBtn {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background-color 0.2s;
+  align-self: center;
+}
+
+.deleteBtn:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.deleteBtn img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .mainContent { padding: 16px; }
+  .formCanvas  { padding: 20px; }
+  .statesHeader,
+  .statesTitleRow,
+  .fieldStateRow {
+    grid-template-columns: 160px 1fr 1fr 1fr 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContent { margin-left: 240px; }
+  .statesHeader,
+  .statesTitleRow,
+  .fieldStateRow {
+    grid-template-columns: 140px 1fr 1fr 1fr 32px;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 640px) {
+  .mainContent { margin-left: 0; padding: 12px; }
+  .formCanvas  { border-radius: 8px; min-height: auto; }
+  .statesHeader,
+  .statesTitleRow,
+  .fieldStateRow {
+    grid-template-columns: 110px 1fr 1fr 1fr 30px;
+    gap: 4px;
+  }
+  .statesTitleCell { font-size: 22px; }
+}
