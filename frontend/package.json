@@ -18,7 +18,8 @@
     "react-dom": "^18.3.1",
     "react-minimal-pie-chart": "^9.1.0",
     "react-router-dom": "^7.4.0",
-    "recharts": "^2.15.2"
+    "recharts": "^2.15.2",
+    "terser": "^5.46.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
