@@ -16,7 +16,7 @@
   width: 100%;
   max-width: 430px;
   padding: 2.5rem;
-  background: rgba(255, 255, 255, 0.72);
+  background: var(--card);
   backdrop-filter: blur(14px);
   border: 1px solid var(--border);
   border-radius: 18px;
@@ -76,7 +76,7 @@
 }
 
 .backButton {
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--card);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border);
   border-radius: 12px;
