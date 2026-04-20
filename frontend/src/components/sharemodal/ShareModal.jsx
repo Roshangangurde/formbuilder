@@ -19,9 +19,15 @@ const ShareModal = ({ formId, formName, onClose }) => {
     return () => document.removeEventListener("keydown", handleKey);
   }, [onClose]);
 
+  const isValidEmail = (e) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+
   const sendInvite = async () => {
     if (!email.trim()) {
       setMessage({ text: "Please enter an email address", type: "error" });
+      return;
+    }
+    if (!isValidEmail(email.trim())) {
+      setMessage({ text: "Please enter a valid email address", type: "error" });
       return;
     }
     setSending(true);

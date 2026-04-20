@@ -22,9 +22,15 @@ const InviteForm = () => {
     );
   }
 
+  const isValidEmail = (e) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+
   const sendInvite = async () => {
     if (!email.trim()) {
       setMessage("Please enter an email address");
+      return;
+    }
+    if (!isValidEmail(email.trim())) {
+      setMessage("Please enter a valid email address");
       return;
     }
 

@@ -49,7 +49,18 @@ export default function FormBuilder() {
     setFormFields((prev) => [...prev, newField]);
   };
 
+  const isSafeUrl = (url) => {
+    if (!url) return true;
+    try {
+      const { protocol } = new URL(url);
+      return protocol === "https:" || protocol === "http:";
+    } catch {
+      return false;
+    }
+  };
+
   const updateField = (id, value, key = "value") => {
+    if (key === "url" && value && !isSafeUrl(value)) return;
     setFormFields((prev) =>
       prev.map((field) =>
         field.id === id ? { ...field, [key]: value } : field
