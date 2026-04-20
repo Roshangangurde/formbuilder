@@ -14,7 +14,9 @@ connectDB();
 
 const allowedOrigins = [
   "https://formbuilder-orpin-one.vercel.app",
+  "https://formbuilder-brown.vercel.app",
   /^http:\/\/localhost:\d+$/,
+  /^https:\/\/.*\.vercel\.app$/,
 ];
 
 app.use(cors({
