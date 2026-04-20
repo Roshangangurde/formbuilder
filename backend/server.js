@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import helmet from "helmet";
 import connectDB from "./config/db.js";
 import indexRoutes from "./routes/indexRoutes.js";
 
@@ -11,6 +12,8 @@ const PORT = process.env.PORT || 3000;
 
 
 connectDB();
+
+app.use(helmet());
 
 const allowedOrigins = [
   "https://formbuilder-orpin-one.vercel.app",

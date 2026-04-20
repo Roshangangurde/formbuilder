@@ -1,18 +1,35 @@
 import express from "express";
+import rateLimit from "express-rate-limit";
 import User from "../models/user.js";
 import authMiddleware from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  message: { message: "Too many attempts, please try again later" },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
-router.post("/register", async (req, res) => {
+
+router.post("/register", authLimiter, async (req, res) => {
     try {
         const { name, email, password, confirmPassword } = req.body;
 
         if (!name || !email || !password || !confirmPassword) {
             return res.status(400).json({ message: "All fields are required" });
         }
-        
+
+        if (typeof name !== "string" || name.trim().length > 100) {
+            return res.status(400).json({ message: "Name must be under 100 characters" });
+        }
+
+        if (typeof password !== "string" || password.length < 6 || password.length > 128) {
+            return res.status(400).json({ message: "Password must be 6–128 characters" });
+        }
+
         if (password !== confirmPassword) {
             return res.status(400).json({ message: "Passwords do not match" });
         }
@@ -22,19 +39,18 @@ router.post("/register", async (req, res) => {
             return res.status(400).json({ message: "User already exists" });
         }
 
-
-        const newUser = new User({ name, email, password});
+        const newUser = new User({ name: name.trim(), email, password });
         await newUser.save();
-        
+
         res.status(201).json({ message: "User registered successfully" });
-       
+
     } catch (err) {
-        res.status(500).json({ message: "Server error", error: err.message });
+        res.status(500).json({ message: "Server error" });
     }
 });
 
 
-router.post("/login", async (req, res) => {
+router.post("/login", authLimiter, async (req, res) => {
     try {
         const { email, password } = req.body;
 
@@ -53,7 +69,7 @@ router.post("/login", async (req, res) => {
         res.json({ message: "Login successful", token, userId: user._id, name: user.name, email: user.email });
 
     } catch (err) {
-        res.status(500).json({ message: "Server error", error: err.message });
+        res.status(500).json({ message: "Server error" });
     }
 });
 
@@ -65,7 +81,7 @@ router.get("/profile", authMiddleware, async (req, res) => {
 
         res.json(user);
     } catch (err) {
-        res.status(500).json({ message: "Server error", error: err.message });
+        res.status(500).json({ message: "Server error" });
     }
 });
 

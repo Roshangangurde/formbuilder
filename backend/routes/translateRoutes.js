@@ -1,14 +1,31 @@
 import express from "express";
+import rateLimit from "express-rate-limit";
 
 const router = express.Router();
 
+const translateLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 20,
+  message: { error: "Too many translation requests, please slow down" },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
 // POST /translate — translate array of strings from English to target language
 // Uses MyMemory free API (no key needed, 10k chars/day per IP)
-router.post("/", async (req, res) => {
+router.post("/", translateLimiter, async (req, res) => {
   const { texts, target } = req.body;
 
   if (!texts || !Array.isArray(texts) || !target) {
     return res.status(400).json({ error: "texts[] and target language code required" });
+  }
+
+  if (texts.length > 50) {
+    return res.status(400).json({ error: "Maximum 50 texts per request" });
+  }
+
+  if (texts.some(t => t && String(t).length > 500)) {
+    return res.status(400).json({ error: "Each text must be under 500 characters" });
   }
 
   if (target === "en") {
@@ -34,7 +51,7 @@ router.post("/", async (req, res) => {
     );
     res.json({ translations });
   } catch (err) {
-    res.status(500).json({ error: "Translation failed", details: err.message });
+    res.status(500).json({ error: "Translation failed" });
   }
 });
 
